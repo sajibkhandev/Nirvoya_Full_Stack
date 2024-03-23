@@ -1,7 +1,17 @@
 import { Button, Checkbox, Form, Input } from 'antd';
+import axios from 'axios'
 
 function App() {
-  const onFinish = (values) => {
+  const onFinish = async(values) => {
+
+    let data=await axios.post('http://localhost:8000/api/v1/auth/registration',{
+      username:values.username,
+      email:values.email,
+      password:values.password
+
+    })
+    console.log(data);
+    
   console.log('Success:', values);
 };
 const onFinishFailed = (errorInfo) => {

@@ -1,4 +1,5 @@
 const registrationController=(req,res)=>{
-    res.send("this is from routes 222")
+    res.send(req.body);
+    
 }
 module.exports=registrationController
