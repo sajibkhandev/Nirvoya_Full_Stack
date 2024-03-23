@@ -9,7 +9,12 @@ function App() {
       email:values.email,
       password:values.password
 
-    })
+    },{
+      headers:{
+        Authorization: "ertertgrfgvfdf"
+      }
+    }
+    )
     console.log(data);
     
   console.log('Success:', values);
