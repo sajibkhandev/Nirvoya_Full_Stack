@@ -3,9 +3,11 @@ const emailValidation = require("../helpers/emailValidation");
 const passwordValidation = require("../helpers/passwordValidation");
 const userSchema = require("../models/userSchema");
 const bcrypt = require('bcrypt');
+const axios =require('axios')
+const otpGenerator = require('otp-generator')
 
 
-const registrationController=(req,res)=>{
+const registrationController=async(req,res)=>{
     const {username,email,password}=req.body
     if(blankInput(username)){
         res.send({error:"Username is required"})
@@ -19,20 +21,33 @@ const registrationController=(req,res)=>{
         res.send({error:"Strong Password"})
     }
     else{
-        bcrypt.hash(password, 10, function(err, hash) {
-             let data=new userSchema({
+        let existingData=await userSchema.find({email:email})
+        
+        if(existingData.length>0){
+           
+            res.send({error:`${email} is already existied`})
+
+        }else{
+            let otp=otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
+            
+             bcrypt.hash(password, 10, function(err, hash) {
+            let data=new userSchema({
             username:username,
             email:email,
-            password:hash
+            password:hash,
+            otp:otp
         })
         data.save()
         res.send({
             username:data.username,
-            email:data.email
+            email:data.email,
+            role:data.role
         });
 
     
 });
+        }
+
        
     }
 }
