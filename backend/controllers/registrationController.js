@@ -2,6 +2,7 @@ const blankInput = require("../helpers/blankInput");
 const emailValidation = require("../helpers/emailValidation");
 const passwordValidation = require("../helpers/passwordValidation");
 const userSchema = require("../models/userSchema");
+const bcrypt = require('bcrypt');
 
 
 const registrationController=(req,res)=>{
@@ -18,13 +19,21 @@ const registrationController=(req,res)=>{
         res.send({error:"Strong Password"})
     }
     else{
-        let data=new userSchema({
+        bcrypt.hash(password, 10, function(err, hash) {
+             let data=new userSchema({
             username:username,
             email:email,
-            password:password
+            password:hash
         })
         data.save()
-        res.send(data);
+        res.send({
+            username:data.username,
+            email:data.email
+        });
+
+    
+});
+       
     }
 }
 module.exports=registrationController
