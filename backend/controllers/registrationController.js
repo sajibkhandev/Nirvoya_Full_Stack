@@ -24,13 +24,10 @@ const registrationController=async(req,res)=>{
         let existingData=await userSchema.find({email:email})
         
         if(existingData.length>0){
-           
             res.send({error:`${email} is already existied`})
-
         }else{
-            let otp=otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
-            
-             bcrypt.hash(password, 10, function(err, hash) {
+            let otp=otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false, upperCaseAlphabets:false,digits:true });
+            bcrypt.hash(password, 10, function(err, hash) {
             let data=new userSchema({
             username:username,
             email:email,
@@ -43,12 +40,8 @@ const registrationController=async(req,res)=>{
             email:data.email,
             role:data.role
         });
-
-    
 });
         }
-
-       
     }
 }
 module.exports=registrationController
