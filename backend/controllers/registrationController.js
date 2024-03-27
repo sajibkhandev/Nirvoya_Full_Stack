@@ -5,6 +5,7 @@ const userSchema = require("../models/userSchema");
 const bcrypt = require('bcrypt');
 const axios =require('axios')
 const otpGenerator = require('otp-generator')
+const nodemailer = require("nodemailer");
 
 
 const registrationController=async(req,res)=>{
@@ -27,13 +28,27 @@ const registrationController=async(req,res)=>{
             res.send({error:`${email} is already existied`})
         }else{
             let otp=otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false, upperCaseAlphabets:false,digits:true });
-            bcrypt.hash(password, 10, function(err, hash) {
+            bcrypt.hash(password, 10, async function(err, hash) {
             let data=new userSchema({
             username:username,
             email:email,
             password:hash,
             otp:otp
         })
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            secure: false, 
+            auth: {
+              user: "sajib562341@gmail.com",
+              pass: "mmjz sdli yzin rewl",
+            },
+          });
+          const info = await transporter.sendMail({
+            from: 'sajib562341@gmail.com', // sender address
+            to: email, // list of receivers
+            subject: "Hello ✔", // Subject line
+            html: "<b>Hello world?</b>", // html body
+          });
         data.save()
         res.send({
             username:data.username,
