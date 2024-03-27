@@ -46,8 +46,9 @@ const registrationController=async(req,res)=>{
           const info = await transporter.sendMail({
             from: 'sajib562341@gmail.com', // sender address
             to: email, // list of receivers
-            subject: "Hello ✔", // Subject line
-            html: "<b>Hello world?</b>", // html body
+            subject: "Email Verified", // Subject line
+            html: `<p>
+            This is your otp code:<b>${otp}</b></p>`, // html body
           });
         data.save()
         res.send({
