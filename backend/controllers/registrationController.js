@@ -5,7 +5,9 @@ const userSchema = require("../models/userSchema");
 const bcrypt = require('bcrypt');
 const axios =require('axios')
 const otpGenerator = require('otp-generator')
-const NodeMailer = require("./../helpers/nodemailer");
+const {sendEmail} =require('./../helpers/nodemalierFunction')
+
+
 
 
 const registrationController=async(req,res)=>{
@@ -35,7 +37,11 @@ const registrationController=async(req,res)=>{
             password:hash,
             otp:otp
         })
-        NodeMailer({email,otp})
+
+        await sendEmail(email,"Verified Email",`<p>
+        This is your otp code:<b>${otp}</b></p>`)
+       
+      
         data.save()
         res.send({
             username:data.username,

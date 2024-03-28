@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
-const nodemailer1=async({email,otp})=>{
-    const transporter = nodemailer.createTransport({
+
+ const transporter = nodemailer.createTransport({
         service: "gmail",
         secure: false, 
         auth: {
@@ -8,13 +8,17 @@ const nodemailer1=async({email,otp})=>{
           pass: "mmjz sdli yzin rewl",
         },
       });
-      const info = await transporter.sendMail({
+
+
+      function sendEmail(email,subject,html){
+        return  transporter.sendMail({
         from: 'sajib562341@gmail.com', // sender address
         to: email, // list of receivers
-        subject: "Email Verified", // Subject line
-        html: `<p>
-        This is your otp code:<b>${otp}</b></p>`, // html body
+        subject: subject, // Subject line
+        html: html, // html body
       });
 
-}
-module.exports=nodemailer1
+      }
+
+
+module.exports={transporter,sendEmail}
