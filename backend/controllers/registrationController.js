@@ -29,7 +29,10 @@ const registrationController=async(req,res)=>{
         if(existingData.length>0){
             res.send({error:`${email} is already existied`})
         }else{
-            let otp=otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false, upperCaseAlphabets:false,digits:true });
+            
+            let otp = otpGenerator.generate(6, { lowerCaseAlphabets:false
+            ,upperCaseAlphabets :false,specialChars :false });
+
             bcrypt.hash(password, 10, async function(err, hash) {
             let data=new userSchema({
             username:username,
