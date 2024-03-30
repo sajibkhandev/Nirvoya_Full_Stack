@@ -18,6 +18,10 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
+    isEmailVerified:{
+        type:Boolean,
+        default:false
+    },
     role:{
         type:String,
         enum:["user","merchant","admin"],
