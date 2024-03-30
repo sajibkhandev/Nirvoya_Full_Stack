@@ -1,7 +1,9 @@
 import { Button, Form, Input } from 'antd';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate=useNavigate()
      const onFinish = async(values) => {
 
     let data=await axios.post('http://localhost:8000/api/v1/auth/registration',{
@@ -18,6 +20,7 @@ const Home = () => {
     console.log(data);
     
   console.log('Success:', values);
+  navigate(`/otp/${values.email}`)
 };
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);

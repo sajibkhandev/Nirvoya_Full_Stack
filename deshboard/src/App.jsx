@@ -6,6 +6,7 @@ import {
   RouterProvider
 } from "react-router-dom";
 import OtpRegistration from "./pages/OtpRegistration";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,8 +17,13 @@ const router = createBrowserRouter(
     >
     </Route>
     <Route
-      path="/otp"
+      path="/otp/:email"
       element={<OtpRegistration />}
+    >
+    </Route>
+    <Route
+      path="/login"
+      element={<Login />}
     >
     </Route>
    </>
