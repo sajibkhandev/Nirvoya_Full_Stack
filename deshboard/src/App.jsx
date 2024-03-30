@@ -17,7 +17,7 @@ const router = createBrowserRouter(
     >
     </Route>
     <Route
-      path="/otp/:email"
+      path="/otp/:email/:otp"
       element={<OtpRegistration />}
     >
     </Route>

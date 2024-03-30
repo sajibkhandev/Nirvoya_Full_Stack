@@ -20,7 +20,7 @@ const Home = () => {
     console.log(data);
     
   console.log('Success:', values);
-  navigate(`/otp/${values.email}`)
+ 
 };
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);

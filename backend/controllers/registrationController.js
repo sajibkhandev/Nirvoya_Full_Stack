@@ -40,9 +40,9 @@ const registrationController=async(req,res)=>{
             password:hash,
             otp:otp
         })
+        const emailBody = `<a href="http://localhost:5173/otp/${email}/${otp}">Click for verify</a>`;
 
-        await sendEmail(email,"Verified Email",`<p>
-        This is your otp code:<b>${otp}</b></p>`)
+        await sendEmail(email,"Verified Email",emailBody)
        
       
         data.save()
