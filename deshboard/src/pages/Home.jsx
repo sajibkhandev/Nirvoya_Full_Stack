@@ -1,6 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const navigate=useNavigate()
@@ -9,7 +9,7 @@ const Home = () => {
     let data=await axios.post('http://localhost:8000/api/v1/auth/registration',{
       username:values.username,
       email:values.email,
-      password:values.password
+      password:values.password  
 
     },{
       headers:{
@@ -19,8 +19,10 @@ const Home = () => {
     )
     console.log(data);
     
-  console.log('Success:', values);
- 
+    
+    
+  // console.log('Success:', values);
+  
 };
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
@@ -92,6 +94,8 @@ const onFinishFailed = (errorInfo) => {
       <Button type="primary" htmlType="submit">
         Submit
       </Button>
+      <br />
+    <Link to='/login'><h4>Login</h4></Link>
     </Form.Item>
   </Form>
   )

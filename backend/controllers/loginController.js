@@ -16,15 +16,11 @@ const loginController=async(req,res)=>{
                     res.send({error:"Credintial Inviled"})
                 }
             });
-
         }else{
             res.send({error:"Email is not Verified"})
         }
-
     }else{
         res.send({error:"Creditial Inviled"})
     }
-
-
 }
 module.exports=loginController

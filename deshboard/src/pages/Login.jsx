@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -80,6 +81,8 @@ const Login = () => {
       <Button type="primary" htmlType="submit">
         Submit
       </Button>
+      <br />
+    <Link to='/'><h4>Sign Up</h4></Link>
     </Form.Item>
   </Form>
     </div>
