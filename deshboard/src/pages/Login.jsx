@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
+import axios from 'axios'
 
 
 const Login = () => {
@@ -17,7 +18,7 @@ const Login = () => {
     )
     console.log(data);
   
-    console.log('Success:', values);
+    // console.log('Success:', values);
   };
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
