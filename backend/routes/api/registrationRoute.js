@@ -3,11 +3,13 @@ const registrationController = require("../../controllers/registrationController
 const loginController = require("../../controllers/loginController")
 const secureApi = require("../../middleware/secureApi")
 const otpController = require("../../controllers/otpController")
+const forgetPasswordController = require("../../controllers/forgetPasswordController")
 const _=express.Router()
 
 _.post("/registration",secureApi,registrationController)
 _.post("/login",secureApi,loginController)
 _.post("/otp",otpController)
+_.post("/forgetpassword",forgetPasswordController)
 
 
 module.exports=_
