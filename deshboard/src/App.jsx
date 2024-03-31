@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import OtpRegistration from "./pages/OtpRegistration";
 import Login from "./pages/Login";
+import ForgetPassword from "./pages/ForgetPassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,11 @@ const router = createBrowserRouter(
     <Route
       path="/login"
       element={<Login />}
+    >
+    </Route>
+    <Route
+      path="/forgetpassword"
+      element={<ForgetPassword />}
     >
     </Route>
    </>

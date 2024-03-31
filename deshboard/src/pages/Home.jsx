@@ -95,7 +95,7 @@ const onFinishFailed = (errorInfo) => {
         Submit
       </Button>
       <br />
-    <Link to='/login'><h4>Login</h4></Link>
+    <Link to='/login'><h3>Login</h3></Link>
     </Form.Item>
   </Form>
   )

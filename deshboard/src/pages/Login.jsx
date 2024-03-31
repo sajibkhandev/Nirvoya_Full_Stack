@@ -82,7 +82,9 @@ const Login = () => {
         Submit
       </Button>
       <br />
-    <Link to='/'><h4>Sign Up</h4></Link>
+      <Link to='/forgetpassword'><h4>Forget Password</h4></Link>
+      
+    <Link to='/'><h3>Sign Up</h3></Link>
     </Form.Item>
   </Form>
     </div>
