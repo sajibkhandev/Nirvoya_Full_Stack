@@ -1,13 +1,17 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 
 
 const ChangePassword = () => {
+const parem =useParams()
     const onFinish = async(values) => {
+        
     
         let data=await axios.post('http://localhost:8000/api/v1/auth/changepassword',{
-          email:values.password,
+          token:parem.token,
+          password:values.password
     
         }
         )

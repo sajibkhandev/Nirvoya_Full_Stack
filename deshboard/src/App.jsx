@@ -8,6 +8,7 @@ import {
 import OtpRegistration from "./pages/OtpRegistration";
 import Login from "./pages/Login";
 import ForgetPassword from "./pages/ForgetPassword";
+import ChangePassword from "./pages/ChangePassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,11 @@ const router = createBrowserRouter(
     <Route
       path="/forgetpassword"
       element={<ForgetPassword />}
+    >
+    </Route>
+    <Route
+      path="/changepassword/:token"
+      element={<ChangePassword />}
     >
     </Route>
    </>

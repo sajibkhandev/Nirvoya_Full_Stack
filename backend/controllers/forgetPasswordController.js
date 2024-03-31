@@ -8,7 +8,7 @@ const forgetPasswordController = async (req, res) => {
     let findEmail = await userSchema.findOne({ email: email })
     if (findEmail) {
         var token = jwt.sign({ email: email }, 'sajib');
-        console.log(token);
+        // console.log(token);
         const transporter = nodemailer.createTransport({
             service: "gmail",
             secure: false,
