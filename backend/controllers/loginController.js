@@ -6,12 +6,24 @@ const loginController=async(req,res)=>{
     let findData=await userSchema.findOne({email:email})
     if(findData){
         if(findData.isEmailVerified==true){
-            console.log(findData);
+            
             bcrypt.compare(password, findData.password, function(err, result) {
                 // result == true
                 if(result){
-                    console.log("navigate");
-                    res.send({success:"Verified successfull"})
+                   
+                    
+                    res.send({
+                        data:
+                        {
+                        id:findData._id,
+                        username:findData.username,
+                        email:findData.email,
+                        role:findData.role,
+                        isEmailVerified:findData.isEmailVerified,   
+                       },
+                       success:"Login Successfull"
+                       
+                    })
                 }else{
                     res.send({error:"Credintial Inviled"})
                 }

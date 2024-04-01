@@ -8,9 +8,6 @@ const ChangePassword = () => {
   const navigate=useNavigate()
 const parem =useParams()
     const onFinish = async(values) => {
-      
-        
-    
         let data=await axios.post('http://localhost:8000/api/v1/auth/changepassword',{
           token:parem.token,
           password:values.password

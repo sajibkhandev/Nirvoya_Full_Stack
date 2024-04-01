@@ -9,13 +9,14 @@ import OtpRegistration from "./pages/OtpRegistration";
 import Login from "./pages/Login";
 import ForgetPassword from "./pages/ForgetPassword";
 import ChangePassword from "./pages/ChangePassword";
+import Registration from "./pages/Registration";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
    <>
     <Route
       path="/"
-      element={<Home />}
+      element={<Registration />}
     >
     </Route>
     <Route
@@ -36,6 +37,11 @@ const router = createBrowserRouter(
     <Route
       path="/changepassword/:token"
       element={<ChangePassword />}
+    >
+    </Route> 
+    <Route
+      path="/home"
+      element={<Home />}
     >
     </Route>
    </>

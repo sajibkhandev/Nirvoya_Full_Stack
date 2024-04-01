@@ -1,8 +1,11 @@
 import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const ForgetPassword = () => {
+  let navigate=useNavigate()
+
     const onFinish = async(values) => {
     
         let data=await axios.post('http://localhost:8000/api/v1/auth/forgetpassword',{
@@ -10,8 +13,14 @@ const ForgetPassword = () => {
     
         }
         )
-        console.log(data);
-      
+        if(data.data.success=="Send email for chanage password"){
+          navigate('/login')
+          console.log(data);
+        }else{
+          console.log(data);
+          
+
+        }
         // console.log('Success:', values);
       };
       const onFinishFailed = (errorInfo) => {

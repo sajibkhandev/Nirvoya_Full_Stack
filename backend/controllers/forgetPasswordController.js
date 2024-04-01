@@ -28,7 +28,7 @@ const forgetPasswordController = async (req, res) => {
 
 
     } else {
-        res.send({ error: `You don't have account this ${email}` })
+        res.send({ error: `Doesn't Exists ${email}` })
     }
 
 }
