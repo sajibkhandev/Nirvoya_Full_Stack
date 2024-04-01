@@ -24,6 +24,8 @@ const forgetPasswordController = async (req, res) => {
             html: `<a href="http://localhost:5173/changepassword/${token}">Click here to change you password</a>`, // html body
         });
 
+        res.send({success:"Send email for chanage password"})
+
 
     } else {
         res.send({ error: `You don't have account this ${email}` })
