@@ -46,11 +46,12 @@ const registrationController=async(req,res)=>{
        
       
         data.save()
-        res.send({
-            username:data.username,
-            email:data.email,
-            role:data.role
-        });
+        // res.send({
+        //     username:data.username,
+        //     email:data.email,
+        //     role:data.role
+        // });
+        res.send({success:"Registration successfull"})
 });
         }
     }
