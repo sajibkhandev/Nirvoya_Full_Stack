@@ -10,13 +10,14 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-
-
 const Home = () => {
+  let user=JSON.parse(localStorage.getItem("user"))
+ 
     const onClick = (e) => {
     console.log('click ', e);
   };
   const items = [
+    user.role =="admin" &&
   getItem('User', 'sub1', <MailOutlined />, [
     getItem('Merchant', 'g1', ),
     getItem('User', 'g2', ),

@@ -18,10 +18,16 @@ const Login = () => {
       }
     }
     )
-    console.log(data);
-    if(data.data.data.isEmailVerified){
-      navigate('/home')
+    
+    if(!data.data.data.isEmailVerified){
+      res.send({error:"Please verify your email"})
+     
+    }else if(data.data.data.role=="user"){
+      res.send({error:"You don't have permssion"})
+    }else{
+       navigate('/home')
       localStorage.setItem("user",JSON.stringify(data.data.data))
+      console.log(data);
     }
     } catch (error) {
     }
