@@ -7,8 +7,8 @@ import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   let navigate=useNavigate()
   const onFinish = async(values) => {
-    
-    let data=await axios.post('http://localhost:8000/api/v1/auth/login',{
+    try {
+      let data=await axios.post('http://localhost:8000/api/v1/auth/login',{
       email:values.email,
       password:values.password
 
@@ -19,9 +19,10 @@ const Login = () => {
     }
     )
     console.log(data);
-    if((data.data.success=="Login Successfull")){
+    if(data.data.data.isEmailVerified){
       navigate('/home')
-
+    }
+    } catch (error) {
     }
   
     // console.log('Success:', values);
