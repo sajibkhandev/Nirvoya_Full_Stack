@@ -9,8 +9,8 @@ const Login = () => {
   const onFinish = async(values) => {
     try {
       let data=await axios.post('http://localhost:8000/api/v1/auth/login',{
-      email:values.email,
-      password:values.password
+      email:"sajibkhan.mern@gmail.com",
+      password:"99999999"
 
     },{
       headers:{
@@ -21,6 +21,7 @@ const Login = () => {
     console.log(data);
     if(data.data.data.isEmailVerified){
       navigate('/home')
+      localStorage.setItem("user",JSON.stringify(data.data.data))
     }
     } catch (error) {
     }
@@ -53,12 +54,12 @@ const Login = () => {
     <Form.Item
       label="Email"
       name="email"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your email!',
-        },
-      ]}
+      // rules={[
+      //   {
+      //     required: true,
+      //     message: 'Please input your email!',
+      //   },
+      // ]}
     >
       <Input />
     </Form.Item>
@@ -66,12 +67,12 @@ const Login = () => {
     <Form.Item
       label="Password"
       name="password"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your password!',
-        },
-      ]}
+      // rules={[
+      //   {
+      //     required: true,
+      //     message: 'Please input your password!',
+      //   },
+      // ]}
     >
       <Input.Password />
     </Form.Item>
