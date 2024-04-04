@@ -39,7 +39,7 @@ const Dashboard = () => {
   },
   getItem('Category and SubCategory', 'sub4', <SettingOutlined />, [
     getItem('Add Category', '/dashboard/category'),
-    getItem('Add SubCategory', '10'),
+    getItem('Add SubCategory', '/dashboard/subcategory'),
     getItem('View Category', '11'),
     getItem('View SubCategory', '12'),
   ]), 

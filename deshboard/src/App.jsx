@@ -12,6 +12,7 @@ import ChangePassword from "./pages/ChangePassword";
 import Registration from "./pages/Registration";
 import Dashboard from "./pages/Dashboard";
 import AddCategory from "./pages/AddCategory";
+import AddSubCategory from "./pages/AddSubCategory";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,6 +49,11 @@ const router = createBrowserRouter(
        <Route
       path="category"
       element={<AddCategory />}
+    >
+    </Route>  
+    <Route
+      path="subcategory"
+      element={<AddSubCategory />}
     >
     </Route> 
 
