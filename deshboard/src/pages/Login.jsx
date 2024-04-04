@@ -2,9 +2,12 @@ import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { active } from '../slices/activeUser';
 
 
 const Login = () => {
+  let dispatch=useDispatch()
   let navigate=useNavigate()
   const onFinish = async(values) => {
     try {
@@ -26,6 +29,8 @@ const Login = () => {
       res.send({error:"You don't have permssion"})
     }else{
        navigate('/dashboard')
+       dispatch(active(data.data.data))
+       
       localStorage.setItem("user",JSON.stringify(data.data.data))
       console.log(data);
     }

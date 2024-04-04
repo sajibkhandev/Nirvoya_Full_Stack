@@ -57,7 +57,7 @@ const Dashboard = () => {
   
   return (
     <Row>
-      <Col span={12}> <Menu
+      <Col span={8}> <Menu
       onClick={onClick}
       style={{
         width: 256,
@@ -66,8 +66,9 @@ const Dashboard = () => {
       defaultOpenKeys={['sub1']}
       mode="inline"
       items={items}
-    /></Col>
-      <Col span={12}>
+    />
+    </Col>
+      <Col span={16}>
         <Outlet/>
       </Col>
     </Row>
