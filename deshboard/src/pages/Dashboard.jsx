@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import { Col, Row } from 'antd';
+import { Outlet, useNavigate } from 'react-router-dom';
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -10,11 +12,13 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-const Home = () => {
+const Dashboard = () => {
+  let navigate=useNavigate()
   let user=JSON.parse(localStorage.getItem("user"))
  
     const onClick = (e) => {
-    console.log('click ', e);
+    console.log('click ', e.key);
+    navigate(e.key)
   };
   const items = [
     user.role =="admin" &&
@@ -34,7 +38,7 @@ const Home = () => {
     type: 'divider',
   },
   getItem('Category and SubCategory', 'sub4', <SettingOutlined />, [
-    getItem('Add Category', '9'),
+    getItem('Add Category', '/dashboard/category'),
     getItem('Add SubCategory', '10'),
     getItem('View Category', '11'),
     getItem('View SubCategory', '12'),
@@ -52,7 +56,8 @@ const Home = () => {
 ];
   
   return (
-     <Menu
+    <Row>
+      <Col span={12}> <Menu
       onClick={onClick}
       style={{
         width: 256,
@@ -61,8 +66,13 @@ const Home = () => {
       defaultOpenKeys={['sub1']}
       mode="inline"
       items={items}
-    />
+    /></Col>
+      <Col span={12}>
+        <Outlet/>
+      </Col>
+    </Row>
+    
   )
 }
 
-export default Home
+export default Dashboard

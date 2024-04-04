@@ -25,7 +25,7 @@ const Login = () => {
     }else if(data.data.data.role=="user"){
       res.send({error:"You don't have permssion"})
     }else{
-       navigate('/home')
+       navigate('/dashboard')
       localStorage.setItem("user",JSON.stringify(data.data.data))
       console.log(data);
     }

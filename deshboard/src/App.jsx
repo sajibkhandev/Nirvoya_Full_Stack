@@ -1,4 +1,4 @@
-import Home from "./pages/Home";
+import Home from "./pages/Dashboard";
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import ForgetPassword from "./pages/ForgetPassword";
 import ChangePassword from "./pages/ChangePassword";
 import Registration from "./pages/Registration";
+import Dashboard from "./pages/Dashboard";
+import AddCategory from "./pages/AddCategory";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,9 +42,16 @@ const router = createBrowserRouter(
     >
     </Route> 
     <Route
-      path="/home"
-      element={<Home />}
+      path="/dashboard"
+      element={<Dashboard />}
     >
+       <Route
+      path="category"
+      element={<AddCategory />}
+    >
+    </Route> 
+
+
     </Route>
    </>
   )
