@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 
@@ -17,6 +17,18 @@ const AddSubCategory = () => {
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
+useEffect(()=>{
+  async function allData(){
+    let data=await axios.get("http://localhost:8000/api/v1/product/allCategory")
+    
+    data.data.map(item=>{
+      console.log(item);
+    })
+
+  }
+  allData()
+
+},[])
   return (
     <Form
     name="basic"
