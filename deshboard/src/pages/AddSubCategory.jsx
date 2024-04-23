@@ -48,10 +48,6 @@ const onFinishFailed = (errorInfo) => {
     >
       <Input />
     </Form.Item>
-
-    
-    
-
     <Form.Item
       wrapperCol={{
         offset: 8,

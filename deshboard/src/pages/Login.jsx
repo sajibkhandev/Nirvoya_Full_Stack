@@ -12,8 +12,8 @@ const Login = () => {
   const onFinish = async(values) => {
     try {
       let data=await axios.post('http://localhost:8000/api/v1/auth/login',{
-      email:"sajibkhan.mern@gmail.com",
-      password:"99999999"
+      email:values.email,
+      password:values.password
 
     },{
       headers:{
@@ -21,6 +21,7 @@ const Login = () => {
       }
     }
     )
+    console.log(data);
     
     if(!data.data.data.isEmailVerified){
       res.send({error:"Please verify your email"})
@@ -65,12 +66,12 @@ const Login = () => {
     <Form.Item
       label="Email"
       name="email"
-      // rules={[
-      //   {
-      //     required: true,
-      //     message: 'Please input your email!',
-      //   },
-      // ]}
+      rules={[
+        {
+          required: true,
+          message: 'Please input your email!',
+        },
+      ]}
     >
       <Input />
     </Form.Item>
@@ -78,12 +79,12 @@ const Login = () => {
     <Form.Item
       label="Password"
       name="password"
-      // rules={[
-      //   {
-      //     required: true,
-      //     message: 'Please input your password!',
-      //   },
-      // ]}
+      rules={[
+        {
+          required: true,
+          message: 'Please input your password!',
+        },
+      ]}
     >
       <Input.Password />
     </Form.Item>
