@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Button, Checkbox, Form, Input,Select  } from 'antd';
 import axios from 'axios';
 
 const AddSubCategory = () => {
+  let [allcategory,setAllcategory]=useState([])
     const onFinish = async(values) => {
   
   console.log('Success:', values.name);
@@ -17,18 +18,39 @@ const AddSubCategory = () => {
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
+const onChange = (value) => {
+  console.log(`selected ${value}`);
+};
+const onSearch = (value) => {
+  console.log('search:', value);
+};
+
+// Filter `option.label` match the user type `input`
+const filterOption = (input, option) =>
+  (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
 useEffect(()=>{
   async function allData(){
     let data=await axios.get("http://localhost:8000/api/v1/product/allCategory")
+    let arr=[]
     
     data.data.map(item=>{
-      console.log(item);
+      arr.push({
+          
+        value: item._id,
+        label: item.name,
+    
+
+      })
+      setAllcategory(arr)
+      
     })
 
   }
   allData()
 
 },[])
+console.log(allcategory);
   return (
     <Form
     name="basic"
@@ -60,6 +82,17 @@ useEffect(()=>{
     >
       <Input />
     </Form.Item>
+     <Select
+    showSearch
+    placeholder="Select a person"
+    optionFilterProp="children"
+    onChange={onChange}
+    onSearch={onSearch}
+    filterOption={filterOption}
+    options={
+      allcategory
+    }
+  />
     <Form.Item
       wrapperCol={{
         offset: 8,
