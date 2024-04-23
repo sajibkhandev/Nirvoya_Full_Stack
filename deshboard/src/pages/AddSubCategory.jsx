@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Input,Select  } from 'antd';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const AddSubCategory = () => {
+  let userId=useSelector(state=>state.currentUser.value.id)
   let [allcategory,setAllcategory]=useState([])
+  let [catagoryId,setCategoryId]=useState()
     const onFinish = async(values) => {
   
   console.log('Success:', values.name);
   let data= await axios.post("http://localhost:8000/api/v1/product/createsubcategory",{
         name:values.name,
         ownerId:userId,
-        catId:catId
+        catId:catagoryId
 
   })
   console.log(data);
@@ -20,6 +23,7 @@ const onFinishFailed = (errorInfo) => {
 };
 const onChange = (value) => {
   console.log(`selected ${value}`);
+  setCategoryId(value)
 };
 const onSearch = (value) => {
   console.log('search:', value);
@@ -50,7 +54,6 @@ useEffect(()=>{
   allData()
 
 },[])
-console.log(allcategory);
   return (
     <Form
     name="basic"
