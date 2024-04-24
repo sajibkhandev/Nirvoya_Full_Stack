@@ -40,7 +40,7 @@ const Dashboard = () => {
   getItem('Category and SubCategory', 'sub4', <SettingOutlined />, [
     getItem('Add Category', '/dashboard/category'),
     getItem('Add SubCategory', '/dashboard/subcategory'),
-    getItem('View Category', '11'),
+    getItem('View Category', '/dashboard/viewcategory'),
     getItem('View SubCategory', '12'),
   ]), 
   {
@@ -57,7 +57,7 @@ const Dashboard = () => {
   
   return (
     <Row>
-      <Col span={8}> <Menu
+      <Col span={4}> <Menu
       onClick={onClick}
       style={{
         width: 256,
@@ -68,7 +68,7 @@ const Dashboard = () => {
       items={items}
     />
     </Col>
-      <Col span={16}>
+      <Col span={20}>
         <Outlet/>
       </Col>
     </Row>

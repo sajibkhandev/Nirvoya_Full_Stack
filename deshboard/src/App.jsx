@@ -13,6 +13,7 @@ import Registration from "./pages/Registration";
 import Dashboard from "./pages/Dashboard";
 import AddCategory from "./pages/AddCategory";
 import AddSubCategory from "./pages/AddSubCategory";
+import ViewCategory from "./pages/ViewCategory";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -54,6 +55,11 @@ const router = createBrowserRouter(
     <Route
       path="subcategory"
       element={<AddSubCategory />}
+    >
+    </Route>  
+    <Route
+      path="viewcategory"
+      element={<ViewCategory />}
     >
     </Route> 
 
