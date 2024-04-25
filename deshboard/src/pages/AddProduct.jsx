@@ -40,6 +40,20 @@ const onFinishFailed = (errorInfo) => {
       <Input />
     </Form.Item>
 
+
+<Form.Item
+      label="Image"
+      name="image"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your Product Name!',
+        },
+      ]}
+    >
+      <Input type='file'/>
+    </Form.Item>
+
     
 
    
