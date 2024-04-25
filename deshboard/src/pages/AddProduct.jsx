@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const AddProduct = () => {
+    let [discription,setDiscription]=useState()
     const onFinish = (values) => {
   console.log('Success:', values);
+  console.log(discription);
 };
 const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
+//   console.log('Failed:', errorInfo);
 };
   return (
      <Form
@@ -39,9 +43,26 @@ const onFinishFailed = (errorInfo) => {
     >
       <Input />
     </Form.Item>
+    <CKEditor
+                editor={ ClassicEditor }
+                    data="<p>Hello from CKEditor&nbsp;5!</p>"
+                    onReady={ editor => {
+                        
+                        // console.log( 'Editor is ready to use!', editor );
+                    } }
+                    onChange={ ( event,editor ) => {
+                        setDiscription(editor.getData())
+                    } }
+                    onBlur={ ( event, editor ) => {
+                        // console.log( 'Blur.', editor );
+                    } }
+                    onFocus={ ( event, editor ) => {
+                        // console.log( 'Focus.', editor );
+                    } }
+                />
 
 
-<Form.Item
+    <Form.Item
       label="Image"
       name="image"
       rules={[
