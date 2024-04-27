@@ -2,14 +2,21 @@ import React, { useState } from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import axios from 'axios'
 
 const AddProduct = () => {
     let [discription,setDiscription]=useState()
     let [image,setImage]=useState({})
-    const onFinish = (values) => {
-  console.log('Success:', values);
-  console.log(discription);
-  console.log(image);
+    const onFinish = async(values) => {
+
+      let data=await axios.post("http://localhost:8000/api/v1/product/createproduct",{
+        name:values.name,
+        discription:discription,
+        image:"image"
+
+      })
+  console.log(data);
+ 
 };
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
