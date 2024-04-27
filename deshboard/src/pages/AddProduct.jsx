@@ -5,13 +5,19 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const AddProduct = () => {
     let [discription,setDiscription]=useState()
+    let [image,setImage]=useState({})
     const onFinish = (values) => {
   console.log('Success:', values);
   console.log(discription);
+  console.log(image);
 };
 const onFinishFailed = (errorInfo) => {
-//   console.log('Failed:', errorInfo);
+  console.log('Failed:', errorInfo);
 };
+let handleImage=(e)=>{
+  setImage(e.target.files[0]);
+
+}
   return (
      <Form
     name="basic"
@@ -68,11 +74,11 @@ const onFinishFailed = (errorInfo) => {
       rules={[
         {
           required: true,
-          message: 'Please input your Product Name!',
+          message: 'Please input your Product Image!',
         },
       ]}
     >
-      <Input type='file'/>
+      <Input onChange={handleImage} type='file'/>
     </Form.Item>
 
     
