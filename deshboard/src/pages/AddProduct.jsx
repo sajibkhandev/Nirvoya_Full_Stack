@@ -12,9 +12,15 @@ const AddProduct = () => {
       let data=await axios.post("http://localhost:8000/api/v1/product/createproduct",{
         name:values.name,
         discription:discription,
-        image:"image"
+        avatar:image
 
-      })
+      },
+      {
+        headers:{
+          "Content-Type":"multipart/form-data"
+        }
+      }
+    )
   console.log(data);
  
 };
