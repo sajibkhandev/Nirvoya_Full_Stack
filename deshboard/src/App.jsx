@@ -15,6 +15,7 @@ import AddCategory from "./pages/AddCategory";
 import AddSubCategory from "./pages/AddSubCategory";
 import ViewCategory from "./pages/ViewCategory";
 import AddProduct from "./pages/AddProduct";
+import ViewProduct from "./pages/ViewProduct";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,6 +67,11 @@ const router = createBrowserRouter(
      <Route
       path="product"
       element={<AddProduct />}
+    >
+    </Route> 
+     <Route
+      path="viewproduct"
+      element={<ViewProduct />}
     >
     </Route> 
 

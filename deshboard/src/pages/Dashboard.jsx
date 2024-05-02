@@ -31,7 +31,7 @@ const Dashboard = () => {
   },
   getItem('Product', 'sub2', <AppstoreOutlined />, [
     getItem('Add Product', '/dashboard/product'),
-    getItem('View Product', '6'),
+    getItem('View Product', '/dashboard/viewproduct'),
    
   ]),
   {
