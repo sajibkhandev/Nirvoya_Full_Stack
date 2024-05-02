@@ -32,6 +32,12 @@ const ViewProduct = () => {
     },[])
     const columns = [
         {
+            title: 'Serial',
+            dataIndex: 'serial',
+            key: 'serial',
+            render: (item,index,text) => <p>{text+1}</p>,
+          },
+        {
           title: 'Name',
           dataIndex: 'name',
           key: 'name',
