@@ -3,16 +3,22 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios'
+import slugify from 'react-slugify';
+
 
 const AddProduct = () => {
   let [discription, setDiscription] = useState()
   let [image, setImage] = useState({})
+  let [slugText,setSlugText]=useState("")
   const onFinish = async (values) => {
 
     let data = await axios.post("http://localhost:8000/api/v1/product/createproduct", {
       name: values.name,
       discription: discription,
-      avatar: image
+      avatar: image,
+      regularprice:values.regularprice,
+      sellprice:values.sellprice,
+      slug:slugText
 
     },
       {
@@ -29,6 +35,10 @@ const AddProduct = () => {
   };
   let handleImage = (e) => {
     setImage(e.target.files[0]);
+
+  }
+  let handleSlugText=(e)=>{
+    setSlugText(e.target.value);
 
   }
   return (
@@ -60,7 +70,7 @@ const AddProduct = () => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={handleSlugText} />
       </Form.Item>
       <CKEditor
         editor={ClassicEditor}
@@ -117,7 +127,8 @@ const AddProduct = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item
+      
+      {/* <Form.Item
         label="Slug"
         name="slug"
         rules={[
@@ -127,8 +138,9 @@ const AddProduct = () => {
           },
         ]}
       >
-        <Input />
-      </Form.Item>
+        <Input defaultValue={}/>
+      </Form.Item> */}
+      <span>Slug:<input style={{width:"93%"}} type="text"  value={slugify(slugText)} disabled/></span>
 
 
       <Form.Item
