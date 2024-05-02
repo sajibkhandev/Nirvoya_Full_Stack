@@ -117,6 +117,18 @@ const AddProduct = () => {
       >
         <Input />
       </Form.Item>
+      <Form.Item
+        label="Slug"
+        name="slug"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your Slug!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
 
 
       <Form.Item
