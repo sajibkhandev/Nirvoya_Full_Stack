@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Checkbox, Form, Input,Select  } from 'antd';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -6,8 +6,10 @@ import axios from 'axios'
 
 const AddVariant = () => {
     let [image, setImage] = useState({})
+    let [allProduct, setAllProduct] = useState([])
+    let [productId, setProductId] = useState("")
     const onChange = (value) => {
-        console.log(`selected ${value}`);
+        setProductId(value);
       };
       const onSearch = (value) => {
         console.log('search:', value);
@@ -20,7 +22,7 @@ const AddVariant = () => {
           avatar: image,
           regularprice:values.regularprice,
           sellprice:values.sellprice,
-        //   productid:productId
+          productid:productId
     
         },
           {
@@ -39,6 +41,23 @@ const AddVariant = () => {
         setImage(e.target.files[0]);
     
       }
+      useEffect(()=>{
+        async function allData(){
+            let data=await axios.get("http://localhost:8000/api/v1/product/allProduct")
+            let arr=[]
+            data.data.map(item=>{
+                arr.push({
+                    value: item._id,
+                    label: item.name
+                })
+                
+            })
+            setAllProduct(arr)
+        }
+        allData()
+
+      },[])
+      
   return (
     <Form
     name="basic"
@@ -115,20 +134,7 @@ const AddVariant = () => {
     onChange={onChange}
     onSearch={onSearch}
     filterOption={filterOption}
-    options={[
-      {
-        value: 'jack',
-        label: 'Jack',
-      },
-      {
-        value: 'lucy',
-        label: 'Lucy',
-      },
-      {
-        value: 'tom',
-        label: 'Tom',
-      },
-    ]}
+    options={allProduct}
   />
     <Form.Item
       wrapperCol={{
