@@ -15,9 +15,9 @@ const AddVariant = () => {
         console.log('search:', value);
       };
       const filterOption = (input, option) =>
-  (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+      (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
     const onFinish = async (values) => {
-        let data = await axios.post("http://localhost:8000/api/v1/product/createproduct", {
+        let data = await axios.post("http://localhost:8000/api/v1/product/createvariant", {
           name: values.name,
           avatar: image,
           regularprice:values.regularprice,
