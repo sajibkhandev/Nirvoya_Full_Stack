@@ -20,7 +20,7 @@ const createProductController=async(req,res)=>{
 
         })
         product.save()
-        res.send({success:"Product have make"})
+        res.send({success:"Product Successfull Created"})
     }
 
 }
