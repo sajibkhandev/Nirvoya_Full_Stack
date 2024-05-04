@@ -6,4 +6,5 @@ const mongodbConfig=()=>{
   .then(() => console.log('Connected!'));
 
 }
+// mongodb+srv://ajib562341:tdOz1tOZFvBqXCQE@cluster0.ur9bur3.mongodb.net/nrivoya?retryWrites=true&w=majority&appName=Cluster0
 module.exports=mongodbConfig
