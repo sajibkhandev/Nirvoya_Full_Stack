@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Slug = () => {
+const Slug = ({params}) => {
+    console.log();
   return (
-    <div>Slug</div>
+    <div>{params.slug}</div>
   )
 }
 
