@@ -1,6 +1,7 @@
 const express=require("express")
 const createCategoryController = require("../../controllers/createCategoryController")
 const allCategoryController = require("../../controllers/allCategoryController")
+const allSubCategoryContronller = require("../../controllers/allSubCategoryContronller")
 const createSubCategoryController = require("../../controllers/createSubCategoryController")
 const createProductController = require("../../controllers/createProductController")
 const _=express.Router()
@@ -30,6 +31,7 @@ _.post("/createvariant", upload.single('avatar'),createVariantController)
 
 _.get("/allCategory",allCategoryController)
 _.get("/allProduct",allProductController)
+_.get("/allSubCategory",allSubCategoryContronller)
 
 
 

@@ -10,15 +10,12 @@ async function getData() {
 
 const Category = async() => {
     const data = await getData()
-    data.map(item2=>{
-      console.log(item2._id);
-    })
-    
-  
+    console.log(data);
+ 
   return (
     <div>
         {data.map(item=>(
-            <li><Link href={`category/${item._id}`}>{item.name}--{item.ownerId.username}</Link></li>
+            <li><Link href={`category/${item._id}`}>{item.name}--</Link></li>
         ))}
         
         
