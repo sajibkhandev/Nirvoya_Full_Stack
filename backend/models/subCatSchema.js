@@ -8,7 +8,7 @@ const subCatSchema = new Schema({
     },
     ownerId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"User"
+        ref:"AllUser"
     },
     catId:{
         type:mongoose.Schema.Types.ObjectId,

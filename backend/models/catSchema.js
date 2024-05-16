@@ -8,7 +8,7 @@ const catSchema = new Schema({
     },
     ownerId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"User"
+        ref:"AllUser"
     },
     status:{
         type:String,
