@@ -14,7 +14,11 @@ const catSchema = new Schema({
         type:String,
         enum:["waiting","rejected","approved"],
         default:"waiting"
-    }
+    },
+    subCategoryList:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"SubCategory"
+    }]
 
 })
 

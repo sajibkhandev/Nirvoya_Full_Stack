@@ -1,4 +1,5 @@
 const SubCatSchema = require("../models/subCatSchema");
+const CategorySchema=require("../models/catSchema")
 
 const createSubCategoryController=async(req,res)=>{
 
@@ -14,6 +15,8 @@ const createSubCategoryController=async(req,res)=>{
             catId:catId
         })
         makeProduct.save()
+       await CategorySchema.findOneAndUpdate({_id:catId},{ $push: { subCategoryList:makeProduct._id  }})
+
         res.send({success:"product has make but waiting for admin approval"})
     }
 
