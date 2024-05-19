@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body className={inter.className}>
-      <MainNavber/>
+        <MainNavber/>
         {children}
-        <h1>Banner</h1>
+        <h1>Footer</h1>
         </body>
     </html>
   );
