@@ -33,9 +33,6 @@ const Product = async () => {
 
                     ))}
                     
-                    
-                    
-
                 </Row>
             </Container>
         </div>

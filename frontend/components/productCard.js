@@ -8,7 +8,7 @@ const ProductCard = ({item}) => {
     <Card className='mt-4' style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`http://localhost:8000${item.image}`} />
       <Card.Body>
-        <Card.Title>{item.name}</Card.Title>
+        <Card.Title>{item.name.substring(0,65)}</Card.Title>
         
           
         
