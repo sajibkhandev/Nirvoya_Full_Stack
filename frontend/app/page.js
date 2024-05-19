@@ -3,12 +3,14 @@ import Category from '@/components/category'
 import Product from '@/components/product'
 import Button from 'react-bootstrap/Button';
 import Banner from '@/components/banner';
+import CategoryName from '@/components/categoryName';
 
 const page = () => {
   return (
    
     <>
     <Banner/>
+    <CategoryName/>
     </>
   )
 }
