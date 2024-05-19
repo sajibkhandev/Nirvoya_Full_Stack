@@ -11,6 +11,7 @@ const page = () => {
     <>
     <Banner/>
     <CategoryName/>
+    <Product/>
     </>
   )
 }
