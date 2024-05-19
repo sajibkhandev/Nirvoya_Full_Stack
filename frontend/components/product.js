@@ -13,7 +13,7 @@ async function getData() {
 
 const Product = async () => {
     const data = await getData()
-    console.log(data);
+    
 
     return (
         <div>
