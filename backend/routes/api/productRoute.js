@@ -9,6 +9,7 @@ const multer  = require('multer')
 const allProductController = require("../../controllers/allProductController")
 const createVariantController = require("../../controllers/createVariantController")
 const createAddToCartController = require("../../controllers/createAddToCartController.js")
+const allCartController = require("../../controllers/allCartController.js")
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -34,6 +35,7 @@ _.post("/cart",createAddToCartController)
 _.get("/allCategory",allCategoryController)
 _.get("/allProduct",allProductController)
 _.get("/allSubCategory",allSubCategoryContronller)
+_.get("/allCart",allCartController)
 
 
 
