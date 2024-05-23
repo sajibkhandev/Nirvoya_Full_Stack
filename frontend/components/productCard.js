@@ -12,7 +12,7 @@ const ProductCard = ({item}) => {
         
           
         
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Add To Cart</Button>
       </Card.Body>
     </Card>
   )
