@@ -5,7 +5,8 @@ const createAddToCartController=async(req,res)=>{
     let existingData=await AddToCart.find({productId:productId})
     if(existingData.length>0){
         let data2= await AddToCart.findOneAndUpdate({_id:existingData[0]._id},{quantity:existingData[0].quantity+1},{new:true})
-        console.log(data2);
+       res.send(data2)
+       
     }else{
         let data=new AddToCart({
             productId:productId,
