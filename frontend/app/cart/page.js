@@ -13,7 +13,11 @@ async function getData() {
 }
 const Cart = async () => {
     const data = await getData()
-    // console.log(data);
+    let total=0
+    data.map(item=>{
+        total+=item.productId.sellprice ? item.productId.sellprice * item.quantity : item.productId.regularprice * item.quantity
+    })
+    console.log();
 
     let handleIncrement = async(id,type) => {
         // console.log(id);
@@ -40,7 +44,7 @@ const Cart = async () => {
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Unit Price</th>
-                        <th>Total</th>
+                        <th>Sub Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +62,7 @@ const Cart = async () => {
                             <td>
                                 <button onClick={() => handleIncrement(item.productId._id,"increment")}>+</button>
                                 {item.quantity}
-                                <button>-</button>
+                                <button onClick={() => handleIncrement(item.productId._id,"decrement")}>-</button>
                             </td>
                             <td>{item.productId.sellprice ? item.productId.sellprice : item.productId.regularprice}</td>
                             <td>{item.productId.sellprice ? item.productId.sellprice * item.quantity : item.productId.regularprice * item.quantity}</td>
@@ -69,6 +73,25 @@ const Cart = async () => {
 
                 </tbody>
             </Table>
+            <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Price</th>
+          <th>Tax(15%)</th>
+          <th>Delivery</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>{total}</td>
+          <td>{total*15/100}</td>
+          <td>50</td>
+          <td>{total+(total*15/100)+50}</td>
+        </tr>
+        
+      </tbody>
+    </Table>
         </Container>
 
     )
