@@ -1,15 +1,11 @@
-import React from 'react'
+"use client"
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Image from 'next/image'
 
 async function getData() {
     const res = await fetch('http://localhost:8000/api/v1/product/allCart')
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-
     if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data')
     }
 
@@ -17,7 +13,24 @@ async function getData() {
 }
 const Cart = async () => {
     const data = await getData()
-    console.log(data);
+    // console.log(data);
+
+    let handleIncrement = async(id,type) => {
+        // console.log(id);
+        const rawResponse = await fetch(`http://localhost:8000/api/v1/product/cart?type=${type}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                productId:id,
+            })
+        });
+        const content = await rawResponse.json();
+        console.log(content);
+
+    }
     return (
         <Container>
             <Table striped bordered hover>
@@ -41,14 +54,14 @@ const Cart = async () => {
                                     alt="Picture of the author"
                                 />
                             </td>
-                            <td>{item.productId.name.substring(0,50)}</td>
+                            <td>{item.productId.name.substring(0, 50)}</td>
                             <td>
-                                <button>+</button>
+                                <button onClick={() => handleIncrement(item.productId._id,"increment")}>+</button>
                                 {item.quantity}
                                 <button>-</button>
                             </td>
-                            <td>{item.productId.sellprice?item.productId.sellprice:item.productId.regularprice}</td>
-                            <td>{item.productId.sellprice?item.productId.sellprice*item.quantity:item.productId.regularprice*item.quantity}</td>
+                            <td>{item.productId.sellprice ? item.productId.sellprice : item.productId.regularprice}</td>
+                            <td>{item.productId.sellprice ? item.productId.sellprice * item.quantity : item.productId.regularprice * item.quantity}</td>
                         </tr>
 
                     ))}

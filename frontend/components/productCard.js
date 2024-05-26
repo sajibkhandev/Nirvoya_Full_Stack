@@ -29,6 +29,7 @@ const ProductCard = ({item}) => {
         
           
         <p>{item.sellprice?<span><del>{item.regularprice}</del>--{item.sellprice}</span>:<span>{item.regularprice}</span>}</p>
+        <p>{item.name}</p>
         <Button onClick={()=>handleCart(item)}  variant="primary">Add To Cart</Button>
       </Card.Body>
     </Card>
