@@ -2,6 +2,8 @@
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Image from 'next/image'
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 
 async function getData() {
     const res = await fetch('http://localhost:8000/api/v1/product/allCart')
@@ -92,6 +94,9 @@ const Cart = async () => {
         
       </tbody>
     </Table>
+    <PayPalScriptProvider options={{ clientId: "test" }}>
+            <PayPalButtons style={{ layout: "horizontal" }} />
+        </PayPalScriptProvider>
         </Container>
 
     )
