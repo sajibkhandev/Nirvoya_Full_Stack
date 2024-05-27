@@ -13,6 +13,7 @@ const AddDiscount = () => {
       };
       const handleChange = (value) => {
         setCouponType(value);
+        
       };
   return (
     <Form
