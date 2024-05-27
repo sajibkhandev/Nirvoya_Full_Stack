@@ -17,6 +17,7 @@ import ViewCategory from "./pages/ViewCategory";
 import AddProduct from "./pages/AddProduct";
 import ViewProduct from "./pages/ViewProduct";
 import AddVariant from "./pages/AddVariant";
+import AddDiscount from "./pages/AddDiscount";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -78,6 +79,11 @@ const router = createBrowserRouter(
      <Route
       path="variant"
       element={<AddVariant />}
+    >
+    </Route> 
+     <Route
+      path="adddiscount"
+      element={<AddDiscount />}
     >
     </Route> 
 

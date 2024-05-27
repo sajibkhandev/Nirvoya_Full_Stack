@@ -49,7 +49,7 @@ const Dashboard = () => {
     type: 'divider',
   },
   getItem('Discount', 'sub5', <SettingOutlined />, [
-    getItem('Add Discount', '13'),
+    getItem('Add Discount', '/dashboard/adddiscount'),
    
     getItem('View Discount', '14'),
     
