@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
 import { Button, Checkbox, Form, Input,Select } from 'antd';
+import axios from 'axios'
 
 
 const AddDiscount = () => {
     let [couponType,setCouponType]=useState("Fixed")
-    console.log(couponType);
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    
+    const onFinish = async (values) => {
+
+      let data= await axios.post("http://localhost:8000/api/v1/product/createDiscount",{
+        couponName:values.couponname,
+        couponAmount:values.couponamount,
+        couponRang:values.couponrang,
+        couponType:couponType
+
+  })
+  console.log(data);
+        
+      
       };
       const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -71,18 +82,6 @@ const AddDiscount = () => {
     >
       <Input />
     </Form.Item>
-    
-
-    <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
     <Select
       defaultValue="fixed"
       style={{
@@ -105,6 +104,19 @@ const AddDiscount = () => {
         
       ]}
     />
+    
+
+    <Form.Item
+      wrapperCol={{
+        offset: 8,
+        span: 16,
+      }}
+    >
+      <Button type="primary" htmlType="submit">
+        Submit
+      </Button>
+    </Form.Item>
+    
   </Form>
   )
 }

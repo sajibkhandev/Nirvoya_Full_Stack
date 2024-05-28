@@ -14,7 +14,7 @@ const AddSubCategory = () => {
         name:values.name,
         ownerId:userId,
         catId:catagoryId
-
+  
   })
   console.log(data);
 };
