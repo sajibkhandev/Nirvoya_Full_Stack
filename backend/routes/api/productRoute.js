@@ -11,6 +11,7 @@ const createVariantController = require("../../controllers/createVariantControll
 const createAddToCartController = require("../../controllers/createAddToCartController.js")
 const createDiscountController = require("../../controllers/createDiscountController.js")
 const allCartController = require("../../controllers/allCartController.js")
+const singleProductController = require("../../controllers/singleProductController.js")
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -38,6 +39,7 @@ _.get("/allCategory",allCategoryController)
 _.get("/allProduct",allProductController)
 _.get("/allSubCategory",allSubCategoryContronller)
 _.get("/allCart",allCartController)
+_.get("/singleProduct/:slug",singleProductController)
 
 
 

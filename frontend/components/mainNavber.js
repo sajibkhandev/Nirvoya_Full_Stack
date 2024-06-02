@@ -9,7 +9,7 @@ const MainNavber = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
     <Container>
-      <Navbar.Brand href="#home">Navber</Navbar.Brand>
+      <Navbar.Brand><Link href="/">Navber</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">

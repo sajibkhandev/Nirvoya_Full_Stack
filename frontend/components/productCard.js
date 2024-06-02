@@ -26,7 +26,7 @@ const ProductCard = ({item}) => {
     <Card className='mt-4' style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`http://localhost:8000${item.image}`} />
       <Card.Body>
-        <Card.Title><Link href={`/product/${item.slug.split(" ").join("-")}`}>{item.name.substring(0,65)}</Link></Card.Title>
+        <Card.Title><Link href={`/product/${item.slug}`}>{item.name.substring(0,65)}</Link></Card.Title>
         
           
         <p>{item.sellprice?<span><del>{item.regularprice}</del>--{item.sellprice}</span>:<span>{item.regularprice}</span>}</p>
