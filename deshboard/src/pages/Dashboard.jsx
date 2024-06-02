@@ -54,6 +54,15 @@ const Dashboard = () => {
     getItem('View Discount', '14'),
     
   ]),
+  {
+    type: 'divider',
+  },
+  getItem('Affiliate', 'sub6', <SettingOutlined />, [
+    getItem('Product List', '/dashboard/affiliate'),
+   
+    
+    
+  ]),
  
 ];
   

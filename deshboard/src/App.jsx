@@ -18,6 +18,7 @@ import AddProduct from "./pages/AddProduct";
 import ViewProduct from "./pages/ViewProduct";
 import AddVariant from "./pages/AddVariant";
 import AddDiscount from "./pages/AddDiscount";
+import Affiliate from "./pages/Affiliate";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -84,6 +85,11 @@ const router = createBrowserRouter(
      <Route
       path="adddiscount"
       element={<AddDiscount />}
+    >
+    </Route> 
+     <Route
+      path="affiliate"
+      element={<Affiliate />}
     >
     </Route> 
 
